@@ -2,9 +2,14 @@
 ## an intro to docker [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
 
 5 parts: 
-1. Orientation: *what is docker*
+1. Orientation:  
 
-2. Containers: *working with containers*  
+*what is docker*
+
+2. Containers:  
+
+*working with containers*  
+
 ```docker 
 docker build -t friendlyname .  # Create image using this directory's Dockerfile
 docker run -p 4000:80 friendlyname  # Run "friendlyname" mapping port 4000 to 80
@@ -23,7 +28,13 @@ docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 ```
-3. Services: *compose files, swarms, & stacks*  
+
+3. Services:  
+
+*compose files, swarms, & stacks*  
+Creating vm behind a proxy(http://www-proxy-rmdc-new.us.oracle.com:80): 
+`docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" --engine-env HTTP_PROXY=http://www-proxy-rmdc-new.us.oracle.com:80 --engine-env HTTPS_PROXY=http://www-proxy-rmdc-new.us.oracle.com:80 myvm2 `
+
 ```docker 
 docker stack ls              # List all running applications on this Docker host
 docker stack deploy -c <composefile> <appname>  # Run the specified Compose file
@@ -31,7 +42,11 @@ docker stack services <appname>       # List the services associated with an app
 docker stack ps <appname>   # List the running containers associated with an app
 docker stack rm <appname>                             # Tear down an application
 ```
-4. Swarms: **  
+
+4. Swarms:  
+
+*swarm clusters, virtual machines, virtual switches!*  
+
 ```docker 
 docker-machine create --driver virtualbox myvm1 # Create a VM (Mac, Win7, Linux)
 docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1 # Win10
@@ -48,5 +63,8 @@ docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images
 docker-machine scp docker-compose.yml myvm1:~     # Copy file to node's home dir
 docker-machine ssh myvm1 "docker stack deploy -c <file> <app>"   # Deploy an app
 ```
+
 5. Stacks
+
 6. Deploy your app
+
